@@ -1,9 +1,29 @@
-const http = require ('http');
-const colors = require ('colors');
+const express = require ('express');
+const app = express();
 
-console.log('Colors'.green);
+app.get('',(req,res)=>{
+res.send('This is an Express');
+});
 
-http.createServer((req,res)=>{
-    res.write('Assalam u Alaikum!');
-    res.end();
-}).listen(4500);
+app.get('/home',(req,res)=>{
+    res.send('This is an Express Home Page');
+    });
+
+    app.get('/about',(req,res)=>{
+        res.send('This is an Express About Page');
+        });
+app.listen(4200);
+
+
+
+
+
+// Server in Nodejs
+
+// const http = require ('http');
+
+
+// http.createServer((req,res)=>{
+//     res.write('Assalam u Alaikum!');
+//     res.end();
+// }).listen(4500);
