@@ -1,7 +1,7 @@
-module.exports={
+let user={
     name: 'Mudassar',
     age: 23,
-    gender: function(){
-        return 'Assalam';
-    }
-}
+    gender: 'male'
+    };
+
+    module.exports=user;
