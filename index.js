@@ -1,19 +1,56 @@
 const express = require("express");
 const path = require('path');
+const route = express.Router();
+
+const ageMiddleware = require ('./middlewares/ageMiddleware')
+
 
 const app = express();
 
 const pagesPath = path.join(__dirname,'pages');
 
+route.use(ageMiddleware);
+
+route.get('', (req,res)=>{
+    res.sendFile(`${pagesPath}/index.html`)
+    })
+
+route.get('/errorPage',(req,res)=>{
+        res.sendFile(`${pagesPath}/errorPage.html`)
+        })
+
+app.use('/',route);
+
+// app.set('view engine','ejs');
+
+
+
+// For Static Page
+
 // app.use(express.static(pagesPath));
 
-app.get("", (req, res) => {
-  res.sendFile(`${pagesPath}/index.html`)
-});
+// app.get("", (req, res) => {
+//   res.sendFile(`${pagesPath}/index.html`)
+// });
 
-app.get("*", (req, res) => {
-    res.sendFile(`${pagesPath}/errorPage.html`)
-  });
+// app.get("*", (req, res) => {
+//     res.sendFile(`${pagesPath}/errorPage.html`)
+//   });
+
+// Random Pages with EJS Template Engine
+
+//   app.get('/home',(req,res)=>{
+//     let user ={
+//         name:'muadassar',
+//         age : 23,
+//         sub : ['Urdu','Eng','Math']
+//     }
+//     res.render('home',{user});
+//   });
+
+//   app.get('/contact',(req,res)=>{
+//     res.render('contact')
+//   });
 
 // app.get("/home", (req, res) => {
 //   res.send([
